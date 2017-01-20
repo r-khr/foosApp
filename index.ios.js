@@ -5,17 +5,7 @@
  */
 
 import React, { Component } from 'react';
-import {
-  AppRegistry,
-} from 'react-native';
-import { Examples } from '@shoutem/ui';
-
-export default class foosApp extends Component {
-  render() {
-    return (
-      <Examples />
-    );
-  }
-}
+import { AppRegistry } from 'react-native';
+import foosApp from './src/index';
 
 AppRegistry.registerComponent('foosApp', () => foosApp);
