@@ -25,8 +25,8 @@ export default class Splash extends Component {
   render() {
     return(
       <View style={{flex:1}}>
-        <Image source={require("../images/foos.jpg")} style={{alignSelf: "stretch"}} resizeMode="contain" />
       </View>
     );
   }
 }
+        // <Image source={require("../images/foos.jpg")} style={{alignSelf: "stretch"}} resizeMode="contain" />

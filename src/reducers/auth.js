@@ -10,13 +10,7 @@ export function SnapChat(state = initialState, action = {}){
   switch(action.type){
     case types.LOGIN:
       return {
-        ...state
-      };
-    case types.CAPTURE:
-      console.log("2");
-      return {
         ...state,
-        captured: true
       };
     case types.CLOSE:
       console.log("2");
@@ -24,8 +18,6 @@ export function SnapChat(state = initialState, action = {}){
         ...state,
         captured: false
       };
-
-
     default:
       return state;
   }
