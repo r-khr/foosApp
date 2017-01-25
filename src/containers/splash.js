@@ -1,32 +1,39 @@
 import React, { Component } from 'react';
 
-import {
+import { 
   View,
+  Button,
   Text,
-  Image
-} from 'react-native';
+  TextInput,
+  Image,
+  Tile,
+  Title,
+  Caption,
+  Subtitle
+} from '@shoutem/ui';
+
 
 export default class Splash extends Component {
   constructor(props){
     super(props);
-    console.log(this.props);
+
+    this.navToProfile = this.navToProfile.bind(this);
   }
 
-  componentDidMount(){
-    // setTimeout(() => this.nav(), 3000);
-  }
 
-  nav(){
+  navToProfile(){
     this.props.navigator.replace({
-      id: 'Dashboard'
+      id: 'Profile'
     });
   }
 
   render() {
     return(
-      <View style={{flex:1}}>
+      <View>
+        <Button styleName="dark" onPress={this.navToProfile}>
+          <Text>Profile</Text>
+        </Button>
       </View>
     );
   }
 }
-        // <Image source={require("../images/foos.jpg")} style={{alignSelf: "stretch"}} resizeMode="contain" />

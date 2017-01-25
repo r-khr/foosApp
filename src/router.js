@@ -1,11 +1,11 @@
 import React, { Component } from 'react';
-import { View, Navigator } from 'react-native';
-import {Router, Route, Scene, Animations, TabBar} from 'react-native-router-flux';
-import { NavigationBar, Title, Image } from '@shoutem/ui';
+import { Text, Navigator } from 'react-native';
+import { Router, Route, Scene, Animations, TabBar } from 'react-native-router-flux';
+import { NavigationBar, Title } from '@shoutem/ui';
 
 import { connect } from 'react-redux'; 
 import { bindActionCreators } from 'redux';
-import * as actions from './actions/auth';
+import * as actions from './actions/user';
 const RouterWithRedux = connect()(Router);
 
 import Splash from './containers/splash';
@@ -19,9 +19,17 @@ class RootRouter extends Component {
   renderScene(route, navigator) {
     var { state, actions } = this.props;
     var routeId = route.id;
-    if (routeId === 'Splash') {
+    if (routeId === 'Profile') {
       return (
         <Profile
+          {...this.props}
+          navigator={navigator}
+        />
+      );
+    }
+    else if (routeId === 'Splash') {
+      return (
+        <Splash
           {...this.props}
           navigator={navigator}
         />
@@ -33,7 +41,7 @@ class RootRouter extends Component {
     return (
       <Navigator
         style={{flex: 1, paddingTop: 70}}
-        initialRoute={{id: 'Splash', name: 'Splash'}}
+        initialRoute={{id: 'Profile', name: 'Profile'}}
         renderScene={this.renderScene.bind(this)}
         navigationBar={
           <NavigationBar
@@ -47,7 +55,7 @@ class RootRouter extends Component {
 }
 
 export default connect(state => ({
-    state: state.auth
+    state: state.default
   }),
   (dispatch) => ({
     actions: bindActionCreators(actions, dispatch)

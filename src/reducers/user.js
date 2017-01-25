@@ -1,15 +1,19 @@
 // @flow
+import * as actions from '../actions/user';
 import {
-} from '../actions/user';
+    SET_USER
+} from '../actions/actionTypes';
 
 const INITIAL_STATE = {
-  user: null
+  firstName: '',
+  lastName: '',
+  email: ''
 };
 
-console.log(INITIAL_STATE.devices);
-
-export default function status(state = INITIAL_STATE, action) {
+export default function user(state = INITIAL_STATE, action) {
   switch (action.type) {
+    case SET_USER:
+      return Object.assign({}, state, action.payload);
     default:
       return state;
   }

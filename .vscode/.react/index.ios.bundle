@@ -68197,10 +68197,6 @@ var _redux=require(734 /* redux */);
 var _reactRedux=require(724 /* react-redux */);
 var _reduxThunk=require(814 /* redux-thunk */);var _reduxThunk2=babelHelpers.interopRequireDefault(_reduxThunk);
 var _reducers=require(811 /* ./reducers */);var reducers=babelHelpers.interopRequireWildcard(_reducers);
-var _reactNative=require(42 /* react-native */);
-
-
-
 var _router=require(817 /* ./router */);var _router2=babelHelpers.interopRequireDefault(_router);
 
 var createStoreWithMiddleware=(0,_redux.applyMiddleware)(_reduxThunk2.default)(_redux.createStore);
@@ -70291,7 +70287,7 @@ user:_user2.default});exports.default=
 
 rootReducer;
 }, 811, null, "foosApp/src/reducers/index.js");
-__d(/* foosApp/src/reducers/auth.js */function(global, require, module, exports) {Object.defineProperty(exports,"__esModule",{value:true});exports.
+__d(/* foosApp/src/reducers/auth.js */function(global, require, module, exports) {Object.defineProperty(exports,"__esModule",{value:true});exports.default=
 
 
 
@@ -70299,7 +70295,7 @@ __d(/* foosApp/src/reducers/auth.js */function(global, require, module, exports)
 
 
 
-SnapChat=SnapChat;var _actionTypes=require(866 /* ../actions/actionTypes */);var types=babelHelpers.interopRequireWildcard(_actionTypes);var _auth=require(865 /* ../actions/auth */);var actions=babelHelpers.interopRequireWildcard(_auth);var initialState={captured:false,count:0};function SnapChat(){var state=arguments.length>0&&arguments[0]!==undefined?arguments[0]:initialState;var action=arguments.length>1&&arguments[1]!==undefined?arguments[1]:{};
+auth;var _actionTypes=require(866 /* ../actions/actionTypes */);var types=babelHelpers.interopRequireWildcard(_actionTypes);var _auth=require(865 /* ../actions/auth */);var actions=babelHelpers.interopRequireWildcard(_auth);var initialState={captured:false,count:0};function auth(){var state=arguments.length>0&&arguments[0]!==undefined?arguments[0]:initialState;var action=arguments.length>1&&arguments[1]!==undefined?arguments[1]:{};
 switch(action.type){
 case types.LOGIN:
 return babelHelpers.extends({},
@@ -70319,6 +70315,9 @@ return state;}
 __d(/* foosApp/src/actions/actionTypes.js */function(global, require, module, exports) {Object.defineProperty(exports,"__esModule",{value:true});var LOGIN=exports.LOGIN='LOGIN';
 var CAPTURE=exports.CAPTURE='CAPTURE';
 var CLOSE=exports.CLOSE='CLOSE';
+
+
+var SET_USER=exports.SET_USER='SET_USER';
 }, 866, null, "foosApp/src/actions/actionTypes.js");
 __d(/* foosApp/src/actions/auth.js */function(global, require, module, exports) {Object.defineProperty(exports,"__esModule",{value:true});exports.
 
@@ -70352,14 +70351,25 @@ __d(/* foosApp/src/reducers/user.js */function(global, require, module, exports)
 
 
 
-status;require(816 /* ../actions/user */);var INITIAL_STATE={user:null};console.log(INITIAL_STATE.devices);function status(){var state=arguments.length>0&&arguments[0]!==undefined?arguments[0]:INITIAL_STATE;var action=arguments[1];
+
+
+user;var _user=require(816 /* ../actions/user */);var actions=babelHelpers.interopRequireWildcard(_user);var _actionTypes=require(866 /* ../actions/actionTypes */);var INITIAL_STATE={firstName:'',lastName:'',email:''};function user(){var state=arguments.length>0&&arguments[0]!==undefined?arguments[0]:INITIAL_STATE;var action=arguments[1];
 switch(action.type){
+case _actionTypes.SET_USER:
+return babelHelpers.extends({},state,action.payload);
 default:
 return state;}
 
 }
 }, 815, null, "foosApp/src/reducers/user.js");
-__d(/* foosApp/src/actions/user.js */function(global, require, module, exports) {
+__d(/* foosApp/src/actions/user.js */function(global, require, module, exports) {Object.defineProperty(exports,"__esModule",{value:true});exports.
+
+setUserData=setUserData;var _actionTypes=require(866 /* ./actionTypes */);var types=babelHelpers.interopRequireWildcard(_actionTypes);function setUserData(data){
+return{
+type:types.SET_USER,
+payload:data};
+
+}
 }, 816, null, "foosApp/src/actions/user.js");
 __d(/* foosApp/src/router.js */function(global, require, module, exports) {Object.defineProperty(exports,"__esModule",{value:true});var _react=require(12 /* react */);var _react2=babelHelpers.interopRequireDefault(_react);
 var _reactNative=require(42 /* react-native */);
@@ -70368,7 +70378,7 @@ var _ui=require(401 /* @shoutem/ui */);
 
 var _reactRedux=require(724 /* react-redux */);
 var _redux=require(734 /* redux */);
-var _auth=require(865 /* ./actions/auth */);var actions=babelHelpers.interopRequireWildcard(_auth);
+var _user=require(816 /* ./actions/user */);var actions=babelHelpers.interopRequireWildcard(_user);
 
 
 var _splash=require(868 /* ./containers/splash */);var _splash2=babelHelpers.interopRequireDefault(_splash);
@@ -70382,9 +70392,17 @@ props));
 route,navigator){var _props=
 this.props,state=_props.state,actions=_props.actions;
 var routeId=route.id;
-if(routeId==='Splash'){
+if(routeId==='Profile'){
 return(
 _react2.default.createElement(_profile2.default,babelHelpers.extends({},
+this.props,{
+navigator:navigator})));
+
+
+}else
+if(routeId==='Splash'){
+return(
+_react2.default.createElement(_splash2.default,babelHelpers.extends({},
 this.props,{
 navigator:navigator})));
 
@@ -70396,7 +70414,7 @@ navigator:navigator})));
 return(
 _react2.default.createElement(_reactNative.Navigator,{
 style:{flex:1,paddingTop:70},
-initialRoute:{id:'Splash',name:'Splash'},
+initialRoute:{id:'Profile',name:'Profile'},
 renderScene:this.renderScene.bind(this),
 navigationBar:
 _react2.default.createElement(_ui.NavigationBar,{
@@ -70410,7 +70428,7 @@ centerComponent:_react2.default.createElement(_ui.Title,null,'Rangle Foos')})}))
 
 
 (0,_reactRedux.connect)(function(state){return{
-state:state.auth};},
+state:state.default};},
 
 function(dispatch){return{
 actions:(0,_redux.bindActionCreators)(actions,dispatch)};})(
@@ -118687,7 +118705,14 @@ textAlign:'center'}}),_shoutemUiImageGall)};};
 }, 722, null, "@shoutem/ui/theme.js");
 __d(/* foosApp/src/containers/splash.js */function(global, require, module, exports) {Object.defineProperty(exports,"__esModule",{value:true});var _react=require(12 /* react */);var _react2=babelHelpers.interopRequireDefault(_react);
 
-var _reactNative=require(42 /* react-native */);var
+var _ui=require(401 /* @shoutem/ui */);var
+
+
+
+
+
+
+
 
 
 
@@ -118696,32 +118721,28 @@ var _reactNative=require(42 /* react-native */);var
 Splash=function(_Component){babelHelpers.inherits(Splash,_Component);
 function Splash(props){babelHelpers.classCallCheck(this,Splash);var _this=babelHelpers.possibleConstructorReturn(this,(Splash.__proto__||Object.getPrototypeOf(Splash)).call(this,
 props));
-console.log(_this.props);return _this;
-}babelHelpers.createClass(Splash,[{key:'componentDidMount',value:function componentDidMount()
 
-{
+_this.navToProfile=_this.navToProfile.bind(_this);return _this;
+}babelHelpers.createClass(Splash,[{key:'navToProfile',value:function navToProfile()
 
-}},{key:'nav',value:function nav()
 
 {
 this.props.navigator.replace({
-id:'Dashboard'});
+id:'Profile'});
 
 }},{key:'render',value:function render()
 
 {
 return(
-_react2.default.createElement(_reactNative.View,{style:{flex:1}}));
+_react2.default.createElement(_ui.View,null,
+_react2.default.createElement(_ui.Button,{styleName:'dark',onPress:this.navToProfile},
+_react2.default.createElement(_ui.Text,null,'Profile'))));
+
 
 
 }}]);return Splash;}(_react.Component);exports.default=Splash;
 }, 868, null, "foosApp/src/containers/splash.js");
 __d(/* foosApp/src/containers/profile.js */function(global, require, module, exports) {Object.defineProperty(exports,"__esModule",{value:true});var _react=require(12 /* react */);var _react2=babelHelpers.interopRequireDefault(_react);
-
-var _reactNative=require(42 /* react-native */);
-
-
-
 
 var _ui=require(401 /* @shoutem/ui */);var
 
@@ -118739,44 +118760,67 @@ var _ui=require(401 /* @shoutem/ui */);var
 Profile=function(_Component){babelHelpers.inherits(Profile,_Component);
 function Profile(props){babelHelpers.classCallCheck(this,Profile);var _this=babelHelpers.possibleConstructorReturn(this,(Profile.__proto__||Object.getPrototypeOf(Profile)).call(this,
 props));
-console.log(_this.props);return _this;
+
+_this.updateFirstName=_this.updateFirstName.bind(_this);
+_this.updateLastName=_this.updateLastName.bind(_this);
+_this.updateEmail=_this.updateEmail.bind(_this);
+_this.navToSplash=_this.navToSplash.bind(_this);return _this;
 }babelHelpers.createClass(Profile,[{key:'updateFirstName',value:function updateFirstName(
 
 val){
-console.log('First Name',val);
+this.props.actions.setUserData({
+firstName:val});
+
 }},{key:'updateLastName',value:function updateLastName(
 
 val){
-console.log('Last Name',val);
+this.props.actions.setUserData({
+lastName:val});
+
 }},{key:'updateEmail',value:function updateEmail(
 
 val){
-console.log('Email',val);
-}},{key:'render',value:function render()
+this.props.actions.setUserData({
+email:val});
+
+}},{key:'navToSplash',value:function navToSplash()
 
 {
+this.props.navigator.replace({
+id:'Splash'});
+
+}},{key:'render',value:function render()
+
+{var _props$state$user=
+this.props.state.user,firstName=_props$state$user.firstName,lastName=_props$state$user.lastName,email=_props$state$user.email;
 return(
-_react2.default.createElement(_ui.Screen,{styleName:'full-screen'},
+_react2.default.createElement(_ui.View,null,
 _react2.default.createElement(_ui.Image,{
 styleName:'large-banner',
 source:require(869 /* ../images/foos.jpg */)},
 
-_react2.default.createElement(_ui.Tile,{styleName:'text-centric'},
-_react2.default.createElement(_ui.Title,{styleName:'sm-gutter-bottom'},'Your Profile'))),
+_react2.default.createElement(_ui.Tile,null,
+_react2.default.createElement(_ui.Title,null,'Your Profile'))),
 
 
-_react2.default.createElement(_reactNative.View,null,
+_react2.default.createElement(_ui.View,null,
 _react2.default.createElement(_ui.TextInput,{
 placeholder:'First Name',
-onChangeText:this.updateFirstName}),
+onChangeText:this.updateFirstName,
+value:firstName}),
 
 _react2.default.createElement(_ui.TextInput,{
 placeholder:'Last Name',
-onChangeText:this.updateLastName}),
+onChangeText:this.updateLastName,
+value:lastName}),
 
 _react2.default.createElement(_ui.TextInput,{
 placeholder:'Email',
-onChangeText:this.updateEmail}))));
+onChangeText:this.updateEmail,
+value:email}),
+
+_react2.default.createElement(_ui.Button,{styleName:'dark',onPress:this.navToSplash},
+_react2.default.createElement(_ui.Text,null,'Splash')))));
 
 
 
