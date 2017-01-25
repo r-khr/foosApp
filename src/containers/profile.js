@@ -9,7 +9,8 @@ import {
   Tile,
   Title,
   Caption,
-  Subtitle
+  Subtitle,
+  Divider
 } from '@shoutem/ui';
 
 
@@ -65,11 +66,13 @@ export default class Profile extends Component {
             onChangeText={this.updateFirstName} 
             value={firstName}
           />
+          <Divider styleName="line" />
           <TextInput 
             placeholder={'Last Name'}
             onChangeText={this.updateLastName} 
             value={lastName}
           />
+          <Divider styleName="line" />
           <TextInput 
             placeholder={'Email'}
             onChangeText={this.updateEmail} 

@@ -70376,12 +70376,17 @@ var _reactNative=require(42 /* react-native */);
 var _reactNativeRouterFlux=require(818 /* react-native-router-flux */);
 var _ui=require(401 /* @shoutem/ui */);
 
+
+
+
+
+
 var _reactRedux=require(724 /* react-redux */);
 var _redux=require(734 /* redux */);
 var _user=require(816 /* ./actions/user */);var actions=babelHelpers.interopRequireWildcard(_user);
 
 
-var _splash=require(868 /* ./containers/splash */);var _splash2=babelHelpers.interopRequireDefault(_splash);
+var _games=require(881 /* ./containers/games */);var _games2=babelHelpers.interopRequireDefault(_games);
 var _profile=require(871 /* ./containers/profile */);var _profile2=babelHelpers.interopRequireDefault(_profile);var RouterWithRedux=(0,_reactRedux.connect)()(_reactNativeRouterFlux.Router);var
 
 RootRouter=function(_Component){babelHelpers.inherits(RootRouter,_Component);
@@ -70402,7 +70407,7 @@ navigator:navigator})));
 }else
 if(routeId==='Splash'){
 return(
-_react2.default.createElement(_splash2.default,babelHelpers.extends({},
+_react2.default.createElement(_games2.default,babelHelpers.extends({},
 this.props,{
 navigator:navigator})));
 
@@ -118703,7 +118708,7 @@ text:{
 color:Colors.DARK,
 textAlign:'center'}}),_shoutemUiImageGall)};};
 }, 722, null, "@shoutem/ui/theme.js");
-__d(/* foosApp/src/containers/splash.js */function(global, require, module, exports) {Object.defineProperty(exports,"__esModule",{value:true});var _react=require(12 /* react */);var _react2=babelHelpers.interopRequireDefault(_react);
+__d(/* foosApp/src/containers/games.js */function(global, require, module, exports) {Object.defineProperty(exports,"__esModule",{value:true});var _react=require(12 /* react */);var _react2=babelHelpers.interopRequireDefault(_react);
 
 var _ui=require(401 /* @shoutem/ui */);var
 
@@ -118715,36 +118720,55 @@ var _ui=require(401 /* @shoutem/ui */);var
 
 
 
-
-
-
-Splash=function(_Component){babelHelpers.inherits(Splash,_Component);
-function Splash(props){babelHelpers.classCallCheck(this,Splash);var _this=babelHelpers.possibleConstructorReturn(this,(Splash.__proto__||Object.getPrototypeOf(Splash)).call(this,
+Games=function(_Component){babelHelpers.inherits(Games,_Component);
+function Games(props){babelHelpers.classCallCheck(this,Games);var _this=babelHelpers.possibleConstructorReturn(this,(Games.__proto__||Object.getPrototypeOf(Games)).call(this,
 props));
 
 _this.navToProfile=_this.navToProfile.bind(_this);return _this;
-}babelHelpers.createClass(Splash,[{key:'navToProfile',value:function navToProfile()
+}babelHelpers.createClass(Games,[{key:'navToProfile',value:function navToProfile()
 
 
 {
 this.props.navigator.replace({
 id:'Profile'});
 
+}},{key:'renderRow',value:function renderRow(
+
+rowData){
+return(
+_react2.default.createElement(_ui.View,null,
+_react2.default.createElement(_ui.Row,{styleName:'small'},
+_react2.default.createElement(_ui.Icon,{name:'star'}),
+_react2.default.createElement(_ui.Text,null,text)),
+
+_react2.default.createElement(_ui.Divider,{styleName:'line'})));
+
+
 }},{key:'render',value:function render()
 
 {
+var data=[
+'stuff',
+'stuff',
+'stuff',
+'stuff',
+'stuff',
+'stuff',
+'stuff'];
+
+
 return(
-_react2.default.createElement(_ui.View,null,
-_react2.default.createElement(_ui.Button,{styleName:'dark',onPress:this.navToProfile},
-_react2.default.createElement(_ui.Text,null,'Profile'))));
+_react2.default.createElement(_ui.ListView,{
+data:data,
+renderRow:this.renderRow}));
 
 
-
-}}]);return Splash;}(_react.Component);exports.default=Splash;
-}, 868, null, "foosApp/src/containers/splash.js");
+}}]);return Games;}(_react.Component);exports.default=Games;
+}, 881, null, "foosApp/src/containers/games.js");
 __d(/* foosApp/src/containers/profile.js */function(global, require, module, exports) {Object.defineProperty(exports,"__esModule",{value:true});var _react=require(12 /* react */);var _react2=babelHelpers.interopRequireDefault(_react);
 
 var _ui=require(401 /* @shoutem/ui */);var
+
 
 
 
@@ -118809,11 +118833,13 @@ placeholder:'First Name',
 onChangeText:this.updateFirstName,
 value:firstName}),
 
+_react2.default.createElement(_ui.Divider,{styleName:'line'}),
 _react2.default.createElement(_ui.TextInput,{
 placeholder:'Last Name',
 onChangeText:this.updateLastName,
 value:lastName}),
 
+_react2.default.createElement(_ui.Divider,{styleName:'line'}),
 _react2.default.createElement(_ui.TextInput,{
 placeholder:'Email',
 onChangeText:this.updateEmail,

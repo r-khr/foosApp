@@ -1,14 +1,19 @@
 import React, { Component } from 'react';
 import { Text, Navigator } from 'react-native';
 import { Router, Route, Scene, Animations, TabBar } from 'react-native-router-flux';
-import { NavigationBar, Title } from '@shoutem/ui';
+import { 
+  NavigationBar,
+  DropDownMenu,
+  Title,
+  View
+} from '@shoutem/ui';
 
 import { connect } from 'react-redux'; 
 import { bindActionCreators } from 'redux';
 import * as actions from './actions/user';
 const RouterWithRedux = connect()(Router);
 
-import Splash from './containers/splash';
+import Games from './containers/games';
 import Profile from './containers/profile';
 
 class RootRouter extends Component {
@@ -29,14 +34,14 @@ class RootRouter extends Component {
     }
     else if (routeId === 'Splash') {
       return (
-        <Splash
+        <Games
           {...this.props}
           navigator={navigator}
         />
       );
     }
   }
-    
+
   render() {
     return (
       <Navigator
