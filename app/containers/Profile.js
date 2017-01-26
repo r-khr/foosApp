@@ -79,7 +79,7 @@ export default class Profile extends Component {
             value={email}
           />
           <Button styleName="dark" onPress={this.navToSplash}>
-            <Text>Splash</Text>
+            <Text>Recent Games</Text>
           </Button>
         </View>
       </View>

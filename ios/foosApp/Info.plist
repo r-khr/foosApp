@@ -70,6 +70,8 @@
       <string>Rubik-Medium.ttf</string>
       <string>Rubik-MediumItalic.ttf</string>
       <string>Rubik-Regular.ttf</string>
+      <string>MaterialCommunityIcons.ttf</string>
+      <string>SimpleLineIcons.ttf</string>
     </array>
   </dict>
 </plist>

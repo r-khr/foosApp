@@ -13,7 +13,7 @@ import {
 } from '@shoutem/ui';
 
 
-export default class Splash extends Component {
+export default class Play extends Component {
   constructor(props){
     super(props);
 
