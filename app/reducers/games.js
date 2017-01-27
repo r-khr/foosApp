@@ -6,7 +6,16 @@ import {
 
 const INITIAL_STATE = [
   {
-
+    player1: 'John',
+    player2: 'William',
+  },
+  {
+    player1: 'Mark',
+    player2: 'Andrew',
+  },
+  {
+    player1: 'Jack',
+    player2: 'Warren',
   }
 ];
 

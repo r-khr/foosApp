@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 
 import { 
+  Screen,
   View,
   Button,
   Text,
@@ -10,9 +11,9 @@ import {
   Title,
   Caption,
   Subtitle,
-  Divider
+  Divider,
+  NavigationBar
 } from '@shoutem/ui';
-
 
 export default class Profile extends Component {
   constructor(props){
@@ -44,7 +45,7 @@ export default class Profile extends Component {
 
   navToSplash(){
     this.props.navigator.replace({
-      id: 'Splash'
+      id: 'Games'
     });
   }
 
@@ -52,6 +53,9 @@ export default class Profile extends Component {
     var { firstName, lastName, email } = this.props.state.user;
     return(
       <View>
+        <NavigationBar
+          centerComponent={(<Title>TITLE</Title>)}
+        />
         <Image
           styleName="large-banner"
           source={require("../images/foos.jpg")}

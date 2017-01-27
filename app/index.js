@@ -5,6 +5,9 @@ import thunk from 'redux-thunk';
 import * as reducers from './reducers';
 import Router from './router';
 
+import theme from './theme';
+import { StyleProvider } from '@shoutem/theme';
+
 const createStoreWithMiddleware = applyMiddleware(thunk)(createStore);
 const reducer = combineReducers(reducers);
 const store = createStoreWithMiddleware(reducer);
