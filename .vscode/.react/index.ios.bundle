@@ -74985,7 +74985,6 @@ id:urlId});
 {
 return(
 _react2.default.createElement(_reactNative.Navigator,{
-sceneStyle:{flex:1},
 initialRoute:{id:'Profile',name:'Profile'},
 renderScene:this.renderScene.bind(this)}));
 
@@ -75004,6 +75003,7 @@ RootRouter);
 __d(/* foosApp/app/containers/Games.js */function(global, require, module, exports) {Object.defineProperty(exports,"__esModule",{value:true});var _react=require(431 /* react */);var _react2=babelHelpers.interopRequireDefault(_react);
 
 var _ui=require(594 /* @shoutem/ui */);
+
 
 
 
@@ -75085,22 +75085,21 @@ gameData=gameData.concat(newArray);
 
 rowData){
 return(
-_react2.default.createElement(_ui.View,null,
 _react2.default.createElement(_ui.Row,{styleName:'small'},
 _react2.default.createElement(_ui.Icon,{name:'friends'}),
-_react2.default.createElement(_ui.Text,null,rowData.player1,' vs. ',rowData.player2)),
-
-_react2.default.createElement(_ui.Divider,{styleName:'line'})));
+_react2.default.createElement(_ui.Text,null,rowData.player1,' vs. ',rowData.player2)));
 
 
 }},{key:'render',value:function render()
 
 {
 return(
+_react2.default.createElement(_ui.Screen,{styleName:'full-screen'},
 _react2.default.createElement(_ui.ListView,{
 data:gameData,
 onLoadMore:this.loadMoreData,
-renderRow:this.renderRow}));
+renderRow:this.renderRow})));
+
 
 
 }}]);return Games;}(_react.Component);exports.default=Games;

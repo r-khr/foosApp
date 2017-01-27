@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 
 import {
+  Screen,
   ListView,
   Row,
   Icon,
@@ -82,23 +83,23 @@ export default class Games extends Component {
 
   renderRow(rowData) {
     return (
-      <View>
-        <Row styleName="small">
-          <Icon name="friends" />
-          <Text>{rowData.player1} vs. {rowData.player2}</Text>
-        </Row>
-        <Divider styleName="line" />
-      </View>
+      <Row styleName="small">
+        <Icon name="friends" />
+        <Text>{rowData.player1} vs. {rowData.player2}</Text>
+      </Row>
     )
   }
 
   render() {
     return(
-      <ListView
-        data={gameData}
-        onLoadMore={this.loadMoreData}
-        renderRow={this.renderRow}
-      />
+      <Screen styleName="full-screen">
+        <ListView
+          data={gameData}
+          onLoadMore={this.loadMoreData}
+          renderRow={this.renderRow}
+        />
+      </Screen>
     );
   }
 }
+

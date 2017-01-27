@@ -4,27 +4,25 @@ Shoutem UI has a lot of very nicely designed components.
 It takes a bit of time to understand exactly how to structure these components to get the most out of pre-build designs.
 
 The framework revolves around particular documented nesting patterns. 
-It introduces base components that are meant to provide specific functionality and when nested together to create intricate designs.
-Not all component can be arbitrarily nested, there are particular wrappers that must be used to accommodate for layout patterns.
+Every component provides a specific functionality and when nested together to create intricate designs.
+Not all component can be nested together, there are particular wrappers that must be used to accommodate for layout patterns.
 
-An issue I've noticed is when mixing react-native and @shoutem/ui components. When nesting in default react-native the design begins to fall apart. 
+An issue I've noticed is when mixing react-native and @shoutem/ui components. 
+When nesting Shoutem components in default react-native the design begins to fall apart. 
 This is because most @shoutem/ui component have internal positive or negative margins to account for their design patterns.
 
-Particularly issues I've noticed relate to NavigationBar, Screen and View components. Where different components overlap and hide others in some instances.
+Particularly I've noticed issues relating to NavigationBar, Screen and View components.
 
-Instead of providing the different layout possibilities it would have been better to just provide the styling that each component provides.
+Instead of providing documentation for different layout possibilities it would have been better to just provide the styling that each component provides.
 This would make the documentation much easier to follow.
 
 # Shoutem Theme
 
 Shoutem Theme currently doesn't work as intended.
-
 When StyleProvider is added to wrap the app it removes all default styling.
-
 The intended behaviour is for for theme styling to add or replace default styling which isn't how it works at the moment.
 
 # Final Thoughts
-Shoutem Provides very nice components that look great right out of the box.
-
-Since at the moment Shoutem Theme doesn't work as intended I could see myself using their element for particular 
-components within my application but not for the whole project.
+- Shoutem provides very nice components that look great right out of the box.
+- It isn't mature enough to be used for an entire app but can be used for some components.
+- Don't try to modify themes since it doesn't work.
